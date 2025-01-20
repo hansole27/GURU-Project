@@ -132,23 +132,20 @@
             android:id="@+id/SaveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FF9800"
             android:layout_marginEnd="16dp"
-            android:backgroundTint="#FFC633"
-            android:text="수정완료"
-            android:textColor="#FFFFFF"
             android:textStyle="bold"
-            app:cornerRadius="24dp" />
-
+            app:cornerRadius="24dp"
+            android:text="저장" />
         <Button
             android:id="@+id/CancleButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="#FF9800"
             android:layout_marginStart="16dp"
-            android:backgroundTint="#FFC633"
-            android:text="취소"
-            android:textColor="#FFFFFF"
             android:textStyle="bold"
-            app:cornerRadius="24dp" />
+            app:cornerRadius="24dp"
+            android:text="취소" />
     </LinearLayout>
 
 </LinearLayout>
