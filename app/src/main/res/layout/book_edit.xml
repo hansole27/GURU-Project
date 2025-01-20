@@ -1,125 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingRight="30dp"
+    android:paddingLeft="30dp">
 
-    <TextView
-        android:id="@+id/book_edit"
-        android:layout_width="374dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="16dp"
-        android:background="#72FFEB3B"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/recodingTitle"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="#72FFEB3B"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="수정"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="191dp"
+            android:layout_height="230dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="80dp"
+            android:layout_marginEnd="80dp"
+            app:srcCompat="@drawable/baseline_book_24" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="60sp"
+            android:layout_height="wrap_content"
+            android:text="제목"
+            android:labelFor="@id/edtTitle"/>
+        <EditText
+            android:id="@+id/edtTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:padding="8dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="60sp"
+            android:layout_height="wrap_content"
+            android:text="작가"
+            android:labelFor="@id/edtAuthor"/>
+        <EditText
+            android:id="@+id/edtAuthor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:padding="8dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="60sp"
+            android:layout_height="wrap_content"
+            android:text="출판사"
+            android:labelFor="@id/edtPublisher"/>
+        <EditText
+            android:id="@+id/edtPublisher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:padding="8dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="60sp"
+            android:layout_height="wrap_content"
+            android:text="독서 시작"
+            android:labelFor="@id/edtStart"/>
+        <EditText
+            android:id="@+id/edtStart"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:padding="8dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:layout_width="60sp"
+            android:layout_height="wrap_content"
+            android:text="독서 완료"
+            android:labelFor="@id/edtFinish"/>
+        <EditText
+            android:id="@+id/edtFinish"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:padding="8dp"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:gravity="center"
-        android:padding="16dp"
-        android:text="수정"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/제목"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="22dp"
-        android:background="#FFFFFF"
-        android:hint="제목:"
-        android:padding="12dp"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintMarginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/book_edit" />
+        android:layout_marginTop="16dp">
+        <Button
+            android:id="@+id/SaveButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF9800"
+            android:layout_marginEnd="16dp"
+            android:textStyle="bold"
+            android:text="수정완료" />
+        <Button
+            android:id="@+id/CancleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF9800"
+            android:layout_marginStart="16dp"
+            android:textStyle="bold"
+            android:text="취소" />
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/작가"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="22dp"
-        android:background="#FFFFFF"
-        android:hint="작가:"
-        android:padding="12dp"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintMarginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/제목" />
-
-    <EditText
-        android:id="@+id/출판사"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="22dp"
-        android:background="#FFFFFF"
-        android:hint="출판사:"
-        android:padding="12dp"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintMarginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/작가" />
-
-    <EditText
-        android:id="@+id/독서시작"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="22dp"
-        android:background="#FFFFFF"
-        android:hint="독서 시작:"
-        android:padding="12dp"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintMarginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/출판사" />
-
-    <EditText
-        android:id="@+id/독서완료"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="22dp"
-        android:background="#FFFFFF"
-        android:hint="독서 완료:"
-        android:padding="12dp"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintMarginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/독서시작" />
-
-    <Button
-        android:id="@+id/수정완료버튼"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="48dp"
-        android:backgroundTint="#72FFEB3B"
-        android:text="수정완료"
-        android:textColor="#000000"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
