@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/book_edit"
+        android:id="@+id/book_list"
         android:layout_width="374dp"
         android:layout_height="64dp"
         android:layout_marginTop="16dp"
@@ -17,81 +17,136 @@
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.486"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/제목"
-        android:layout_width="0dp"
+    <LinearLayout
+        android:id="@+id/input_container1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="22dp"
+        android:orientation="horizontal"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="18dp"
-        android:background="#FFFFFF"
-        android:hint="날짜                    책제목                 저자"
-        android:padding="12dp"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintMarginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/book_edit" />
-
-    <EditText
-        android:id="@+id/출판사"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
         android:layout_marginStart="22dp"
         android:layout_marginEnd="18dp"
-        android:background="#FFFFFF"
-        android:padding="12dp"
-        android:hint="날짜                    책제목                 저자"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintMarginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/제목" />
+        app:layout_constraintTop_toBottomOf="@id/book_list">
 
-    <EditText
-        android:id="@+id/list3"
-        android:layout_width="0dp"
+        <EditText
+            android:id="@+id/date1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="날짜"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:inputType="date"/>
+
+        <EditText
+            android:id="@+id/title1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:hint="책제목"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="12dp"
+            android:background="#FFFFFF"/>
+
+        <EditText
+            android:id="@+id/author1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="저자"
+            android:padding="12dp"
+            android:background="#FFFFFF"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/input_container2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
         android:layout_marginStart="22dp"
         android:layout_marginEnd="18dp"
-        android:background="#FFFFFF"
-        android:padding="12dp"
-        android:hint="날짜                    책제목                 저자"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintMarginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/list2" />
+        app:layout_constraintTop_toBottomOf="@id/input_container1">
 
-    <EditText
-        android:id="@+id/list2"
-        android:layout_width="0dp"
+        <EditText
+            android:id="@+id/date2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="날짜"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:inputType="date"/>
+
+        <EditText
+            android:id="@+id/title2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:hint="책제목"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="12dp"
+            android:background="#FFFFFF"/>
+
+        <EditText
+            android:id="@+id/author2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="저자"
+            android:padding="12dp"
+            android:background="#FFFFFF"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/input_container3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
         android:layout_marginStart="22dp"
         android:layout_marginEnd="18dp"
-        android:background="#FFFFFF"
-        android:hint="날짜                    책제목                 저자"
-        android:padding="12dp"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintMarginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/출판사" />
+        app:layout_constraintTop_toBottomOf="@id/input_container2">
+
+        <EditText
+            android:id="@+id/date3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="날짜"
+            android:padding="12dp"
+            android:background="#FFFFFF"
+            android:inputType="date"/>
+
+        <EditText
+            android:id="@+id/title3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:hint="책제목"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:padding="12dp"
+            android:background="#FFFFFF"/>
+
+        <EditText
+            android:id="@+id/author3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="저자"
+            android:padding="12dp"
+            android:background="#FFFFFF"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/추가버튼"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="100dp"
         android:layout_marginBottom="48dp"
         android:backgroundTint="#72FFEB3B"
         android:text="추가"
@@ -99,7 +154,6 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
