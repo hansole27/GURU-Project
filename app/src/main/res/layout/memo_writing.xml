@@ -7,7 +7,35 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:background="#FFFFFF">
-    
+
+    <Button
+        android:id="@+id/Save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#FF9800"
+        android:text="저장"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/Cancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Memo" />
+
+    <Button
+        android:id="@+id/Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="100dp"
+        android:backgroundTint="#FF9800"
+        android:text="취소"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/Save"
+        app:layout_constraintTop_toBottomOf="@+id/Memo" />
+
     <TextView
         android:id="@+id/MemoTitle"
         android:layout_width="374dp"
@@ -84,13 +112,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="24dp"
         android:background="#5200D4C9"
         android:gravity="top|start"
         android:hint="메모를 입력하시오."
         android:padding="12dp"
         android:textColor="#000000"
-        app:layout_constraintBottom_toTopOf="@+id/Save"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -98,36 +124,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/Publisher" />
 
-    <Button
-        android:id="@+id/Save"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
-        android:background="#ADD8E6"
-        android:text="저장"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toStartOf="@id/Cancel"
-        app:layout_constraintHorizontalWeight="1"
-        app:layout_constraintMarginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Memo" />
-
-    <Button
-        android:id="@+id/Cancel"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="100dp"
-        android:background="#ADD8E6"
-        android:text="취소"
-        android:textColor="#EFEFEF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontalWeight="1"
-        app:layout_constraintMarginTop="16dp"
-        app:layout_constraintStart_toEndOf="@id/Save"
-        app:layout_constraintTop_toBottomOf="@id/Memo" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
+
