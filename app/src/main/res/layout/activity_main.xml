@@ -61,7 +61,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_book_24" />
+        app:srcCompat="@drawable/baseline_book_24"
+        app:tint="#72FFEB3B"
+        app:tintMode="src_in" />
 
     <ImageView
         android:id="@+id/책1"
@@ -71,7 +73,9 @@
         android:layout_marginTop="132dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_book_24" />
+        app:srcCompat="@drawable/baseline_book_24"
+        app:tint="#72FFEB3B"
+        app:tintMode="src_in" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -81,6 +85,8 @@
         android:layout_marginEnd="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/baseline_book_24" />
+        app:srcCompat="@drawable/baseline_book_24"
+        app:tint="#72FFEB3B"
+        app:tintMode="src_in" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
