@@ -5,11 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:background="#FFFFFF">
+    tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/Save"
+        android:id="@+id/SaveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -18,12 +17,12 @@
         android:backgroundTint="#FF9800"
         android:text="저장"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/Cancel"
+        app:layout_constraintEnd_toStartOf="@+id/CancelButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Memo" />
 
     <Button
-        android:id="@+id/Cancel"
+        android:id="@+id/CancelButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -33,7 +32,7 @@
         android:text="취소"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/Save"
+        app:layout_constraintStart_toEndOf="@+id/SaveButton"
         app:layout_constraintTop_toBottomOf="@+id/Memo" />
 
     <TextView
@@ -49,7 +48,7 @@
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/Title"
+        app:layout_constraintBottom_toTopOf="@+id/작가"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +56,7 @@
 
 
     <EditText
-        android:id="@+id/Title"
+        android:id="@+id/작가"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -87,7 +86,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintMarginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/Title" />
+        app:layout_constraintTop_toBottomOf="@id/작가" />
 
     <EditText
         android:id="@+id/Publisher"
@@ -125,4 +124,3 @@
         app:layout_constraintTop_toBottomOf="@id/Publisher" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
-
