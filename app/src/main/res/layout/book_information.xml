@@ -51,12 +51,12 @@
         app:layout_constraintStart_toEndOf="@+id/MemoButton"
         app:layout_constraintTop_toBottomOf="@+id/독서완료" />
 
-    <EditText
+    <TextView
         android:id="@+id/작가"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:background="#FFFFFF"
         android:hint="작가"
@@ -68,7 +68,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView" />
 
-    <EditText
+    <TextView
         android:id="@+id/출판사"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/작가" />
 
-    <EditText
+    <TextView
         android:id="@+id/독서시작"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/출판사" />
 
-    <EditText
+    <TextView
         android:id="@+id/독서완료"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -140,7 +140,7 @@
         android:layout_width="217dp"
         android:layout_height="212dp"
         android:layout_marginStart="111dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="111dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.48"
