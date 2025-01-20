@@ -55,7 +55,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
-    <EditText
+    <TextView
         android:id="@+id/작가"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/MemoTitle" />
 
-    <EditText
+    <TextView
         android:id="@+id/Author"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -88,7 +88,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/작가" />
 
-    <EditText
+    <TextView
         android:id="@+id/Publisher"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
