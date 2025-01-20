@@ -117,6 +117,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#FF9800"
             android:layout_marginEnd="16dp"
+            android:textStyle="bold"
             android:text="메모" />
         <Button
             android:id="@+id/ChangeButton"
@@ -125,6 +126,7 @@
             android:backgroundTint="#FF9800"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:textStyle="bold"
             android:text="수정" />
         <Button
             android:id="@+id/DeleteButton"
@@ -132,6 +134,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="#FF9800"
             android:layout_marginStart="16dp"
+            android:textStyle="bold"
             android:text="삭제" />
     </LinearLayout>
 
