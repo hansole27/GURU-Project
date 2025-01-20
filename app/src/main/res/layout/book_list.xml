@@ -148,13 +148,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
-        android:backgroundTint="#72FFEB3B"
+        android:backgroundTint="#FFC633"
         android:text="추가"
-        android:textColor="#000000"
+        android:textColor="#FAF8F8"
         android:textStyle="bold"
+        app:cornerRadius="24dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:cornerRadius="24dp"/>
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
