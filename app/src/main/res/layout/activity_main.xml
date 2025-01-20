@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/MemoTitle"
+        android:id="@+id/book_edit"
         android:layout_width="374dp"
         android:layout_height="64dp"
         android:layout_marginTop="16dp"
@@ -24,6 +24,7 @@
         app:layout_constraintHorizontal_bias="0.567"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/추가버튼"
         android:layout_width="wrap_content"
@@ -31,8 +32,12 @@
         android:layout_marginStart="74dp"
         android:layout_marginEnd="220dp"
         android:layout_marginBottom="50dp"
+        android:backgroundTint="#72FFEB3B"
         android:text="추가"
+        android:textAllCaps="false"
+        android:textColor="#000000"
         android:textStyle="bold"
+        app:iconTintMode="add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -45,8 +50,10 @@
         android:layout_marginStart="220dp"
         android:layout_marginEnd="74dp"
         android:layout_marginBottom="50dp"
+        android:backgroundTint="#72FFEB3B"
         android:text="목록"
         android:textAllCaps="false"
+        android:textColor="#040404"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
