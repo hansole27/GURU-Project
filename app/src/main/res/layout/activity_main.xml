@@ -81,26 +81,23 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <Button
-            android:id="@+id/추가버튼"
-            android:layout_width="120dp"
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
             android:backgroundTint="#FF9800"
-            android:text="추가"
-            android:textColor="#FFFDFD"
+            android:layout_marginEnd="16dp"
             android:textStyle="bold"
-            app:cornerRadius="24dp" />
-
+            app:cornerRadius="24dp"
+            android:text="추가" />
         <Button
-            android:id="@+id/목록버튼"
-            android:layout_width="120dp"
+            android:id="@+id/listButton"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
             android:backgroundTint="#FF9800"
-            android:text="목록"
-            android:textColor="#FFFFFF"
+            android:layout_marginStart="16dp"
             android:textStyle="bold"
-            app:cornerRadius="24dp" />
+            app:cornerRadius="24dp"
+            android:text="목록" />
 
     </LinearLayout>
 
