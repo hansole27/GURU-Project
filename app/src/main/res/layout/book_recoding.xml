@@ -26,7 +26,7 @@
             android:textSize="24sp"
             android:textStyle="bold" />
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -40,72 +40,87 @@
             android:layout_marginEnd="80dp"
             app:srcCompat="@drawable/baseline_book_24" />
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="60sp"
             android:layout_height="wrap_content"
-            android:text="제목" />
+            android:text="제목"
+            android:labelFor="@id/edtTitle"/>
         <EditText
             android:id="@+id/edtTitle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:padding="8dp"/>
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="60sp"
             android:layout_height="wrap_content"
-            android:text="작가" />
+            android:text="작가"
+            android:labelFor="@id/edtAuthor"/>
         <EditText
             android:id="@+id/edtAuthor"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:padding="8dp"/>
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="60sp"
             android:layout_height="wrap_content"
-            android:text="출판사" />
+            android:text="출판사"
+            android:labelFor="@id/edtPublisher"/>
         <EditText
             android:id="@+id/edtPublisher"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:padding="8dp"/>
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="60sp"
             android:layout_height="wrap_content"
-            android:text="독서 시작" />
+            android:text="독서 시작"
+            android:labelFor="@id/edtStart"/>
         <EditText
             android:id="@+id/edtStart"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:padding="8dp"/>
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <TextView
             android:layout_width="60sp"
             android:layout_height="wrap_content"
-            android:text="독서 완료" />
+            android:text="독서 완료"
+            android:labelFor="@id/edtFinish"/>
         <EditText
             android:id="@+id/edtFinish"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:minHeight="48dp"
+            android:padding="8dp"/>
     </LinearLayout>
-    
+
     <LinearLayout
         android:gravity="center"
         android:layout_width="match_parent"
