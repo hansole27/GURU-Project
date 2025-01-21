@@ -19,73 +19,73 @@ class BookList : AppCompatActivity() {
     lateinit var layout: LinearLayout
     lateinit var btnAdd: Button
 
-
     @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.book_list)
 
-
+        // DB 초기화
         dbManager = DBManager(this, "book", null, 1)
         sqlitedb = dbManager.readableDatabase
         btnAdd = findViewById(R.id.addButton)
         layout = findViewById(R.id.books)
 
-        var cursor: Cursor
-        cursor = sqlitedb.rawQuery("SELECT * FROM book", null)
+        // 데이터 로드
+        loadData()
 
-        var num: Int = 0
-        if (cursor != null && cursor.moveToFirst()) {
-            do {
-                // 데이터를 읽어오는 코드
-                // 데이터베이스에서 데이터 추출
-                val str_title = cursor.getString(cursor.getColumnIndex("title"))
-
-
-                Log.d("BookList", "<성공> $num 번째 책 - 데이터 읽어오기 성공")
-
-                val layout_item = LinearLayout(this)
-                layout_item.orientation = LinearLayout.VERTICAL
-                layout_item.id = num
-
-                // 제목
-                val tvTitle = TextView(this)
-                tvTitle.text = str_title
-                tvTitle.textSize = 30f
-                tvTitle.setTextColor(Color.BLACK)
-                tvTitle.setBackgroundColor(Color.parseColor("#72FFEB3B"))
-                layout_item.addView(tvTitle)
-
-                // 선 나누기
-                val tvLine = TextView(this)
-                tvLine.setBackgroundColor(Color.WHITE)
-                layout_item.addView(tvLine)
-
-                layout_item.setOnClickListener {
-                    val intent = Intent(this, BookInfo::class.java)
-                    intent.putExtra("intent_title", str_title)
-                    startActivity(intent)
-                }
-
-                // 레이아웃에 최종 추가
-                layout.addView(layout_item)
-                num++
-
-            } while (cursor.moveToNext())  // 수정된 부분: moveToNext()로 모든 행을 처리
-
-            cursor.close()  // 커서 닫기
-        } else {
-            Log.d("BookList", "<실패> 데이터가 없어서 읽어올 수 없습니다.")
-        }
-
-        sqlitedb.close()
-        dbManager.close()
-
-        //'추가' 버튼 클릭 시
-        btnAdd.setOnClickListener{
+        // '추가' 버튼 클릭 시
+        btnAdd.setOnClickListener {
             val intent = Intent(this, BookAdd::class.java)
             startActivity(intent)
         }
     }
 
+    private fun loadData() {
+        layout.removeAllViews() // 기존 뷰 제거
+        sqlitedb = dbManager.readableDatabase
+
+        // 데이터 읽기
+        val cursor: Cursor = sqlitedb.rawQuery("SELECT * FROM book", null)
+        var num = 0
+        if (cursor.moveToFirst()) {
+            do {
+                val strTitle = cursor.getString(cursor.getColumnIndex("title"))
+
+                val layoutItem = LinearLayout(this)
+                layoutItem.orientation = LinearLayout.VERTICAL
+                layoutItem.id = num
+
+                val tvTitle = TextView(this)
+                tvTitle.text = strTitle
+                tvTitle.textSize = 30f
+                tvTitle.setTextColor(Color.BLACK)
+                tvTitle.setBackgroundColor(Color.parseColor("#72FFEB3B"))
+                layoutItem.addView(tvTitle)
+
+                layoutItem.setOnClickListener {
+                    val intent = Intent(this, BookInfo::class.java)
+                    intent.putExtra("intent_title", strTitle)
+                    startActivityForResult(intent, 1) // 수정된 제목 반영
+                }
+
+                layout.addView(layoutItem)
+                num++
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        sqlitedb.close()
+    }
+
+    // 추가된 부분: 수정된 제목 반영
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            loadData() // 수정 후 리스트를 다시 로드
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        dbManager.close()
+    }
 }

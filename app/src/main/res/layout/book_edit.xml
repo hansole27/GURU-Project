@@ -24,18 +24,17 @@
             android:text="수정"
             android:textColor="#000000"
             android:textSize="24sp"
-            android:textStyle="bold"
-            app:cornerRadius="24dp"/>
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="352dp"
+        android:layout_height="147dp">
 
         <ImageView
             android:id="@+id/imageBook"
-            android:layout_width="191dp"
-            android:layout_height="230dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginStart="80dp"
             android:layout_marginEnd="80dp"
@@ -98,12 +97,14 @@
             android:layout_height="wrap_content"
             android:text="독서 시작"
             android:labelFor="@id/edtStart"/>
+
         <EditText
             android:id="@+id/edtStart"
-            android:layout_width="match_parent"
+            android:layout_width="291dp"
             android:layout_height="wrap_content"
+            android:hint="YY/MM/DD"
             android:minHeight="48dp"
-            android:padding="8dp"/>
+            android:padding="8dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -114,38 +115,41 @@
             android:layout_height="wrap_content"
             android:text="독서 완료"
             android:labelFor="@id/edtFinish"/>
+
         <EditText
             android:id="@+id/edtFinish"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="YY/MM/DD"
             android:minHeight="48dp"
-            android:padding="8dp"/>
+            android:padding="8dp" />
     </LinearLayout>
 
     <LinearLayout
-        android:gravity="center"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp">
+        android:layout_marginTop="16dp"
+        android:gravity="center">
 
         <Button
             android:id="@+id/SaveButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FF9800"
             android:layout_marginEnd="16dp"
+            android:backgroundTint="#FF9800"
+            android:text="저장"
             android:textStyle="bold"
-            app:cornerRadius="24dp"
-            android:text="저장" />
+            app:cornerRadius="24dp" />
+
         <Button
             android:id="@+id/CancelButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:backgroundTint="#FF9800"
             android:layout_marginStart="16dp"
+            android:backgroundTint="#FF9800"
+            android:text="취소"
             android:textStyle="bold"
-            app:cornerRadius="24dp"
-            android:text="취소" />
+            app:cornerRadius="24dp" />
     </LinearLayout>
 
 </LinearLayout>

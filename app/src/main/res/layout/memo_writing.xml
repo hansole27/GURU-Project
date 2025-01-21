@@ -80,19 +80,28 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp">
-        <EditText
-            android:id="@+id/Memo"
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="305dp"
+            android:layout_height="262dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:background="#5200D4C9"
-            android:gravity="top|start"
-            android:hint="메모를 입력하시오."
-            android:padding="12dp"
-            android:textColor="#000000" />
+            android:background="#5200D4C9">
+
+            <EditText
+                android:id="@+id/Memo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top|start"
+                android:hint="메모를 입력하시오."
+                android:padding="12dp"
+                android:scrollbars="vertical"
+                android:textColor="#000000" />
+        </ScrollView>
+
     </LinearLayout>
-    
+
+
     <LinearLayout
         android:gravity="center"
         android:layout_width="match_parent"
