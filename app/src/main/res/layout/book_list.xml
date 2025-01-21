@@ -144,7 +144,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/추가버튼"
+        android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="48dp"
