@@ -98,7 +98,7 @@ class BookAdd : AppCompatActivity() {
                 """
                 INSERT INTO book (title, author, publisher, start_date, end_date, memo, image_url) 
                 VALUES ('$str_title', '$str_author', '$str_publisher', 
-                '$str_start', '$str_finish', '', '${selectedImageUri.toString()}')
+                '$str_start', '$str_finish', '', '${selectedImageUri}')
                 """
             )
             Log.d("BookAdd", "<성공> DB에 저장 완료")

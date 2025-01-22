@@ -1,13 +1,10 @@
 package com.example.guruproject
 
-import android.Manifest
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -20,7 +17,6 @@ class BookList : AppCompatActivity() {
     lateinit var layout: LinearLayout
     lateinit var btnAdd: Button
 
-    @SuppressLint("Range")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.book_list)
@@ -28,13 +24,13 @@ class BookList : AppCompatActivity() {
         // DB 초기화
         dbManager = DBManager(this, "book", null, 1)
         sqlitedb = dbManager.readableDatabase
-        btnAdd = findViewById(R.id.addButton)
         layout = findViewById(R.id.books)
+        btnAdd = findViewById(R.id.addButton)
 
         // 데이터 로드
         loadData()
 
-        // '추가' 버튼 클릭 시
+        // '추가' 버튼 클릭 시 BookAdd 액티비티로 이동
         btnAdd.setOnClickListener {
             val intent = Intent(this, BookAdd::class.java)
             startActivity(intent)
@@ -42,11 +38,10 @@ class BookList : AppCompatActivity() {
     }
 
     override fun onRestart() {
-        loadData()
         super.onRestart()
+        loadData() // 화면에 다시 돌아올 때 데이터 갱신
     }
 
-    @SuppressLint("Range")
     private fun loadData() {
         layout.removeAllViews() // 기존 뷰 제거
         sqlitedb = dbManager.readableDatabase
@@ -69,9 +64,7 @@ class BookList : AppCompatActivity() {
                 tvTitle.setBackgroundColor(Color.parseColor("#72FFEB3B"))
                 layoutItem.addView(tvTitle)
 
-
-
-                //각 항목을 누르면 BookInfo 로 넘어간다
+                // 각 항목을 누르면 BookInfo로 넘어감
                 layoutItem.setOnClickListener {
                     val intent = Intent(this, BookInfo::class.java)
                     intent.putExtra("intent_title", strTitle)
@@ -86,7 +79,6 @@ class BookList : AppCompatActivity() {
         sqlitedb.close()
     }
 
-    // 추가된 부분: 수정된 제목 반영
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == 1 && resultCode == RESULT_OK) {
