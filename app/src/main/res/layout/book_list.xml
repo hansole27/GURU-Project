@@ -8,17 +8,25 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/books"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:visibility="visible"
             tools:visibility="visible">
+
+            <!-- 구분선만 추가 -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="#DDDDDD" />
 
         </LinearLayout>
     </ScrollView>
@@ -28,11 +36,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="#FF9800"
         android:text="추가"
         android:textStyle="bold"
-        android:visibility="visible"
-        app:cornerRadius="24dp"
-        tools:visibility="visible" />
+        android:textColor="#FFFFFF"
+        app:cornerRadius="24dp" />
 
 </LinearLayout>
