@@ -16,6 +16,7 @@ class BookList : AppCompatActivity() {
     lateinit var sqlitedb: SQLiteDatabase
     lateinit var layout: LinearLayout
     lateinit var btnAdd: Button
+    lateinit var btnHome: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +27,7 @@ class BookList : AppCompatActivity() {
         sqlitedb = dbManager.readableDatabase
         layout = findViewById(R.id.books)
         btnAdd = findViewById(R.id.addButton)
+        btnHome= findViewById(R.id.homeButton)
 
         // 데이터 로드
         loadData()
@@ -33,6 +35,12 @@ class BookList : AppCompatActivity() {
         // '추가' 버튼 클릭 시 BookAdd 액티비티로 이동
         btnAdd.setOnClickListener {
             val intent = Intent(this, BookAdd::class.java)
+            startActivity(intent)
+        }
+
+        // '홈' 버튼 클릭 시 Main 액티비티로 이동
+        btnHome.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }

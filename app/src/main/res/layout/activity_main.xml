@@ -20,8 +20,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/image2"
         app:layout_constraintTop_toBottomOf="@+id/book_main"
-        app:srcCompat="@drawable/baseline_book_24"
-        app:tint="#FFC633" />
+        app:srcCompat="@drawable/baseline_book_24" />
 
     <ImageView
         android:id="@+id/image7"
@@ -35,8 +34,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image4"
-        app:srcCompat="@drawable/baseline_book_24"
-        app:tint="#FFC633" />
+        app:srcCompat="@drawable/baseline_book_24" />
 
     <ImageView
         android:id="@+id/image8"
@@ -50,8 +48,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/image7"
         app:layout_constraintTop_toBottomOf="@+id/image5"
-        app:srcCompat="@drawable/baseline_book_24"
-        app:tint="#FFC633" />
+        app:srcCompat="@drawable/baseline_book_24" />
 
     <ImageView
         android:id="@+id/image9"
@@ -65,8 +62,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/image8"
         app:layout_constraintTop_toBottomOf="@+id/image6"
-        app:srcCompat="@drawable/baseline_book_24"
-        app:tint="#FFC633" />
+        app:srcCompat="@drawable/baseline_book_24" />
 
     <ImageView
         android:id="@+id/image4"
@@ -80,8 +76,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image1"
-        app:srcCompat="@drawable/baseline_book_24"
-        app:tint="#FFC633" />
+        app:srcCompat="@drawable/baseline_book_24" />
 
     <ImageView
         android:id="@+id/image6"
@@ -95,8 +90,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/image5"
         app:layout_constraintTop_toBottomOf="@+id/image3"
-        app:srcCompat="@drawable/baseline_book_24"
-        app:tint="#FFC633" />
+        app:srcCompat="@drawable/baseline_book_24" />
 
     <ImageView
         android:id="@+id/image5"
@@ -110,8 +104,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/image4"
         app:layout_constraintTop_toBottomOf="@+id/image2"
-        app:srcCompat="@drawable/baseline_book_24"
-        app:tint="#FFC633" />
+        app:srcCompat="@drawable/baseline_book_24" />
 
     <ImageView
         android:id="@+id/image2"
@@ -125,8 +118,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/image1"
         app:layout_constraintTop_toBottomOf="@+id/book_main"
-        app:srcCompat="@drawable/baseline_book_24"
-        app:tint="#FFC633" />
+        app:srcCompat="@drawable/baseline_book_24" />
 
     <ImageView
         android:id="@+id/image1"
@@ -140,8 +132,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/book_main"
-        app:srcCompat="@drawable/baseline_book_24"
-        app:tint="#FFC633" />
+        app:srcCompat="@drawable/baseline_book_24" />
 
     <TextView
         android:id="@+id/book_main"
@@ -184,7 +175,7 @@
             app:cornerRadius="24dp" />
 
         <Button
-            android:id="@+id/listButton"
+            android:id="@+id/homeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"

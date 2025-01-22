@@ -20,9 +20,12 @@ class BookInfo : AppCompatActivity() {
     lateinit var edtStart: TextView
     lateinit var edtFinish: TextView
     lateinit var imageBook: ImageView
+
     lateinit var btnMemo: Button
     lateinit var btnEdit: Button
     lateinit var btnDelete: Button
+    lateinit var btnHome: Button
+
     private var bookTitle: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,9 +46,11 @@ class BookInfo : AppCompatActivity() {
         edtStart = findViewById(R.id.edtStart)
         edtFinish = findViewById(R.id.edtFinish)
         imageBook = findViewById(R.id.imageBook)
+
         btnMemo = findViewById(R.id.MemoButton)
         btnEdit = findViewById(R.id.ChangeButton)
         btnDelete = findViewById(R.id.DeleteButton)
+        btnHome = findViewById(R.id.homeButton)
 
         // 데이터 로드
         loadBookData()
@@ -54,6 +59,12 @@ class BookInfo : AppCompatActivity() {
         btnMemo.setOnClickListener {
             val intent = Intent(this, MemoWriting::class.java)
             intent.putExtra("intent_title", bookTitle)
+            startActivity(intent)
+        }
+
+        // 홈 버튼 클릭
+        btnHome.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
