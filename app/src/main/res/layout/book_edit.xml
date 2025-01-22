@@ -32,13 +32,13 @@
         android:layout_height="147dp">
 
         <ImageView
-            android:id="@+id/imageBook"
+            android:id="@+id/iv_edit_imageBook"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginStart="80dp"
             android:layout_marginEnd="80dp"
-            app:srcCompat="@drawable/baseline_book_24" />
+            android:src="@drawable/baseline_book_24" />
     </LinearLayout>
 
     <LinearLayout

@@ -4,10 +4,14 @@ import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 
 class BookEdit : AppCompatActivity() {
@@ -24,18 +28,17 @@ class BookEdit : AppCompatActivity() {
     lateinit var imageBook: ImageView
     private var selectedImageUri: Uri? = null
 
+    private lateinit var imagePickerLauncher: ActivityResultLauncher<Intent>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.book_edit)
 
-        // Intent로 전달된 데이터 받기
         val bookTitle = intent.getStringExtra("intent_title") ?: return
 
-        // DB 초기화
         dbManager = DBManager(this, "book", null, 1)
         sqlitedb = dbManager.readableDatabase
 
-        // 뷰 연결
         edtTitle = findViewById(R.id.edtTitle)
         edtAuthor = findViewById(R.id.edtAuthor)
         edtPublisher = findViewById(R.id.edtPublisher)
@@ -43,17 +46,33 @@ class BookEdit : AppCompatActivity() {
         edtFinish = findViewById(R.id.edtFinish)
         btnSave = findViewById(R.id.SaveButton)
         btnCancel = findViewById(R.id.CancelButton)
-        imageBook = findViewById(R.id.imageBook)
+        imageBook = findViewById(R.id.iv_edit_imageBook)
 
-        // 기존 데이터 로드
+        imagePickerLauncher = registerForActivityResult(
+            ActivityResultContracts.StartActivityForResult()
+        ) { result ->
+            if (result.resultCode == RESULT_OK && result.data != null) {
+                selectedImageUri = result.data?.data
+                selectedImageUri?.let { uri ->
+                    contentResolver.takePersistableUriPermission(
+                        uri, Intent.FLAG_GRANT_READ_URI_PERMISSION
+                    )
+                    imageBook.setImageURI(uri)
+                }
+            }
+        }
+
+        imageBook.setOnClickListener {
+            openGallery()
+        }
+
+        imageBook.setImageResource(R.drawable.baseline_book_24)
         loadBookData(bookTitle)
 
-        // 저장 버튼 클릭
         btnSave.setOnClickListener {
             saveBookData(bookTitle)
         }
 
-        // 취소 버튼 클릭
         btnCancel.setOnClickListener {
             finish()
         }
@@ -67,10 +86,21 @@ class BookEdit : AppCompatActivity() {
             edtPublisher.setText(cursor.getString(cursor.getColumnIndexOrThrow("publisher")))
             edtStart.setText(cursor.getString(cursor.getColumnIndexOrThrow("start_date")))
             edtFinish.setText(cursor.getString(cursor.getColumnIndexOrThrow("end_date")))
-            val imageUri = cursor.getString(cursor.getColumnIndexOrThrow("image_url"))
-            if (!imageUri.isNullOrEmpty()) {
-                selectedImageUri = Uri.parse(imageUri)
-                imageBook.setImageURI(selectedImageUri)
+
+            val imageUri = cursor.getString(cursor.getColumnIndexOrThrow("image_url"))?.takeIf { it != "null" } ?: ""
+
+            Log.d("load image uri", imageUri)
+            if (imageUri.isNotBlank()) {
+                try {
+                    selectedImageUri = Uri.parse(imageUri)
+                    imageBook.setImageURI(selectedImageUri)
+                    Log.d("load image uri", selectedImageUri.toString())
+                } catch (e: Exception) {
+                    Log.e("Image Load Error", "Error loading image", e)
+                    imageBook.setImageResource(R.drawable.baseline_book_24)
+                }
+            } else {
+                imageBook.setImageResource(R.drawable.baseline_book_24)
             }
         }
         cursor.close()
@@ -92,7 +122,15 @@ class BookEdit : AppCompatActivity() {
                 start_date = ?, end_date = ?, image_url = ? 
             WHERE title = ?
             """,
-            arrayOf(newTitle, newAuthor, newPublisher, newStartDate, newEndDate, imageUriString, oldTitle)
+            arrayOf(
+                newTitle,
+                newAuthor,
+                newPublisher,
+                newStartDate,
+                newEndDate,
+                imageUriString,
+                oldTitle
+            )
         )
         sqlitedb.close()
 
@@ -101,6 +139,12 @@ class BookEdit : AppCompatActivity() {
         setResult(RESULT_OK, intent)
         Toast.makeText(this, "수정되었습니다.", Toast.LENGTH_SHORT).show()
         finish()
+    }
+
+    private fun openGallery() {
+        val intent = Intent(Intent.ACTION_OPEN_DOCUMENT, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_GRANT_PERSISTABLE_URI_PERMISSION)
+        imagePickerLauncher.launch(intent)
     }
 
     override fun onDestroy() {

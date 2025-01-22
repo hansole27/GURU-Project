@@ -2,9 +2,12 @@ package com.example.guruproject
 
 import android.content.Intent
 import android.database.sqlite.SQLiteDatabase
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class BookInfo : AppCompatActivity() {
@@ -16,6 +19,7 @@ class BookInfo : AppCompatActivity() {
     lateinit var edtPublisher: TextView
     lateinit var edtStart: TextView
     lateinit var edtFinish: TextView
+    lateinit var imageBook: ImageView
     lateinit var btnMemo: Button
     lateinit var btnEdit: Button
     lateinit var btnDelete: Button
@@ -38,6 +42,7 @@ class BookInfo : AppCompatActivity() {
         edtPublisher = findViewById(R.id.edtPublisher)
         edtStart = findViewById(R.id.edtStart)
         edtFinish = findViewById(R.id.edtFinish)
+        imageBook = findViewById(R.id.imageBook)
         btnMemo = findViewById(R.id.MemoButton)
         btnEdit = findViewById(R.id.ChangeButton)
         btnDelete = findViewById(R.id.DeleteButton)
@@ -80,6 +85,19 @@ class BookInfo : AppCompatActivity() {
             edtPublisher.text = cursor.getString(cursor.getColumnIndexOrThrow("publisher"))
             edtStart.text = cursor.getString(cursor.getColumnIndexOrThrow("start_date"))
             edtFinish.text = cursor.getString(cursor.getColumnIndexOrThrow("end_date"))
+
+            // 이미지 불러오기
+            val imageUri = cursor.getString(cursor.getColumnIndexOrThrow("image_url"))?.takeIf { it != "null" } ?: ""
+            if (imageUri.isNotBlank()) {
+                try {
+                    val uri = Uri.parse(imageUri)
+                    imageBook.setImageURI(uri)
+                } catch (e: Exception) {
+                    imageBook.setImageResource(R.drawable.baseline_book_24) // 기본 이미지 설정
+                }
+            } else {
+                imageBook.setImageResource(R.drawable.baseline_book_24) // 기본 이미지 설정
+            }
         }
         cursor.close()
     }
