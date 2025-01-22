@@ -46,6 +46,7 @@ class BookList : AppCompatActivity() {
         super.onRestart()
     }
 
+    @SuppressLint("Range")
     private fun loadData() {
         layout.removeAllViews() // 기존 뷰 제거
         sqlitedb = dbManager.readableDatabase
