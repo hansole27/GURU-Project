@@ -1,5 +1,6 @@
 package com.example.guruproject
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.database.Cursor
@@ -38,6 +39,11 @@ class BookList : AppCompatActivity() {
             val intent = Intent(this, BookAdd::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun onRestart() {
+        loadData()
+        super.onRestart()
     }
 
     private fun loadData() {
