@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gpColor1">#FF9800</color>
+    <color name="gpColor2">#72FFEB3B</color>
 </resources>

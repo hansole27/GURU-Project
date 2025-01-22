@@ -146,7 +146,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:backgroundTint="#FF9800"
+            android:backgroundTint="@color/gpColor1"
             android:text="취소"
             android:textStyle="bold"
             app:cornerRadius="24dp" />

@@ -8,7 +8,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="494dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="0dp">
 
@@ -31,6 +31,8 @@
         android:backgroundTint="#FF9800"
         android:text="추가"
         android:textStyle="bold"
-        app:cornerRadius="24dp" />
+        android:visibility="visible"
+        app:cornerRadius="24dp"
+        tools:visibility="visible" />
 
 </LinearLayout>

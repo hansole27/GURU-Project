@@ -50,9 +50,13 @@ class BookAdd : AppCompatActivity() {
 
 
 
+
+
         //DB 초기화
         dbManager = DBManager(this, "book", null, 1)
 
+        //이미지 추가
+        //ImageView 클릭하면 갤러리 접근 > 이미지 선택 > 선택한 이미지 적용
 
 
 

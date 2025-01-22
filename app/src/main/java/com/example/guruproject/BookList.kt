@@ -58,14 +58,17 @@ class BookList : AppCompatActivity() {
                 val tvTitle = TextView(this)
                 tvTitle.text = strTitle
                 tvTitle.textSize = 30f
-                tvTitle.setTextColor(Color.BLACK)
+                tvTitle.setTextColor(Color.WHITE)
                 tvTitle.setBackgroundColor(Color.parseColor("#72FFEB3B"))
                 layoutItem.addView(tvTitle)
 
+
+
+                //각 항목을 누르면 BookInfo 로 넘어간다
                 layoutItem.setOnClickListener {
                     val intent = Intent(this, BookInfo::class.java)
                     intent.putExtra("intent_title", strTitle)
-                    startActivityForResult(intent, 1) // 수정된 제목 반영
+                    startActivityForResult(intent, 1)
                 }
 
                 layout.addView(layoutItem)
