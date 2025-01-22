@@ -65,7 +65,7 @@ class BookList : AppCompatActivity() {
                 val tvTitle = TextView(this)
                 tvTitle.text = strTitle
                 tvTitle.textSize = 30f
-                tvTitle.setTextColor(Color.WHITE)
+                tvTitle.setTextColor(Color.DKGRAY)
                 tvTitle.setBackgroundColor(Color.parseColor("#72FFEB3B"))
                 layoutItem.addView(tvTitle)
 

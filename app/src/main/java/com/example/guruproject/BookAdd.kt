@@ -1,13 +1,17 @@
 package com.example.guruproject
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.provider.MediaStore.Images.Media
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -16,6 +20,7 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 
 class BookAdd : AppCompatActivity() {
@@ -29,6 +34,11 @@ class BookAdd : AppCompatActivity() {
     lateinit var edtPublisher: EditText
     lateinit var edtStart: EditText
     lateinit var edtFinish: EditText
+
+    lateinit var imageBook: ImageView
+
+    private lateinit var imagePickerLauncher: ActivityResultLauncher<Intent>
+    private var selectedImageUri: Uri? = null
 
 
     @SuppressLint("Range")
@@ -47,17 +57,30 @@ class BookAdd : AppCompatActivity() {
         edtPublisher = findViewById(R.id.edtPublisher)
         edtStart = findViewById(R.id.edtStart)
         edtFinish = findViewById(R.id.edtFinish)
-
-
-
+        imageBook = findViewById(R.id.imageBook)
 
 
         //DB 초기화
         dbManager = DBManager(this, "book", null, 1)
 
-        //이미지 추가
-        //ImageView 클릭하면 갤러리 접근 > 이미지 선택 > 선택한 이미지 적용
+        imageBook.setOnClickListener {
+            Toast.makeText(this, "ImageView 클릭됨", Toast.LENGTH_SHORT).show()
+            openGallery()
+        }
 
+                // 이미지 선택 Activity Result 등록
+                imagePickerLauncher = registerForActivityResult(
+                    ActivityResultContracts.StartActivityForResult()
+                ) { result ->
+                    if (result.resultCode == RESULT_OK && result.data != null) {
+                        selectedImageUri = result.data?.data
+                        if (selectedImageUri != null) {
+                            imageBook.setImageURI(selectedImageUri) // 선택한 이미지 표시
+                        } else {
+                            Log.e("BookAdd", "이미지를 선택하지 않았습니다.")
+                        }
+                    }
+                }
 
 
         //정보 입력 후 저장 클릭 시
@@ -74,14 +97,15 @@ class BookAdd : AppCompatActivity() {
             sqlitedb.execSQL(
                 """
                 INSERT INTO book (title, author, publisher, start_date, end_date, memo, image_url) 
-                VALUES ('$str_title', '$str_author', '$str_publisher', '$str_start', '$str_finish', '', '')
+                VALUES ('$str_title', '$str_author', '$str_publisher', 
+                '$str_start', '$str_finish', '', '${selectedImageUri.toString()}')
                 """
             )
             Log.d("BookAdd", "<성공> DB에 저장 완료")
             sqlitedb.close()
 
 
-            //책 저장 후에 메인으로 넘어간다.
+            //책 저장 후에 메인화면으로 이동
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
 
@@ -95,8 +119,10 @@ class BookAdd : AppCompatActivity() {
         }
     }
 
-
-
-
+    // 갤러리 열기
+    private fun openGallery() {
+        val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+        imagePickerLauncher.launch(intent)
+    }
 
 }

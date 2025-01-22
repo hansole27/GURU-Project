@@ -40,10 +40,8 @@ class MainActivity : AppCompatActivity() {
 
         btnAdd = findViewById(R.id.addButton)
         btnList = findViewById(R.id.listButton)
+        
 
-
-
-        //이미지 권한 관련
 
 
         //'추가' 버튼 클릭 시
