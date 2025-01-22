@@ -1,46 +1,74 @@
 package com.example.guruproject
 
-import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
-import android.os.Build
+import android.graphics.BitmapFactory
+import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
 import android.util.Log
 import android.widget.Button
-import android.widget.EditText
 import android.widget.ImageView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
-    //lateinit var dbManager: DBManager
-    //lateinit var sqlitedb: SQLiteDatabase
+    lateinit var dbManager: DBManager
+    lateinit var sqlitedb: SQLiteDatabase
     lateinit var btnAdd: Button
     lateinit var btnList: Button
 
-
-    //lateinit var edtTitle: EditText
-    //lateinit var edtAuthor: EditText
-    //lateinit var edtPublisher: EditText
-    //lateinit var edtStart: EditText
-    //lateinit var edtFinish: EditText
-
-    //lateinit var imageBook: ImageView
+    lateinit var bookImg: ImageView
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // View 연결
         btnAdd = findViewById(R.id.addButton)
         btnList = findViewById(R.id.listButton)
-        
+        bookImg = findViewById(R.id.image1)
+
+        // DBManager 초기화
+        dbManager = DBManager(this, "book", null, 1)
+        sqlitedb = dbManager.readableDatabase
+        val cursor: Cursor = sqlitedb.rawQuery("SELECT image_url FROM book", null)
+
+
+
+        //url 읽어오는 권한 받아오는 작업 필요
+
+
+        // 첫 컬럼의 이미지만 bookImg에 띄우기
+        if (cursor.moveToFirst()) {
+            val imageUri = cursor.getString(0) // 첫 번째 컬럼의 image_url 값 가져오기
+            Log.d("Main", "<성공> 첫 번째 컬럼의 image_url 값 가져오기 ")
+
+            if (imageUri != null) {
+                // content:// URI로 이미지 로드
+                val uri = Uri.parse(imageUri)
+
+                // ImageView에 URI 적용
+                try {
+                    val inputStream = contentResolver.openInputStream(uri)
+                    val bitmap = BitmapFactory.decodeStream(inputStream)
+                    bookImg.setImageBitmap(bitmap)
+                    inputStream?.close()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    // 오류 발생 시 기본 이미지로 대체
+                    bookImg.setImageResource(R.drawable.baseline_book_24)
+                }
+            }
+        } else {
+            // DB에 데이터가 없을 경우 기본 이미지 설정
+            bookImg.setImageResource(R.drawable.baseline_book_24)
+        }
+
+        cursor.close()
 
 
 
@@ -55,7 +83,6 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, BookList::class.java)
             startActivity(intent)
         }
-
     }
 
 }

@@ -64,7 +64,7 @@ class BookAdd : AppCompatActivity() {
         dbManager = DBManager(this, "book", null, 1)
 
         imageBook.setOnClickListener {
-            Toast.makeText(this, "ImageView 클릭됨", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "책 표지 선택하기", Toast.LENGTH_SHORT).show()
             openGallery()
         }
 
