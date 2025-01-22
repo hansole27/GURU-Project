@@ -1,5 +1,6 @@
 package com.example.guruproject
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.database.Cursor
@@ -40,6 +41,12 @@ class BookList : AppCompatActivity() {
         }
     }
 
+    override fun onRestart() {
+        loadData()
+        super.onRestart()
+    }
+
+    @SuppressLint("Range")
     private fun loadData() {
         layout.removeAllViews() // 기존 뷰 제거
         sqlitedb = dbManager.readableDatabase
