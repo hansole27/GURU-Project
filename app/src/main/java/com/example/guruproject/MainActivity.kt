@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
@@ -73,37 +74,45 @@ class MainActivity : AppCompatActivity() {
         val cursor = sqlitedb.rawQuery("SELECT * FROM book", null)
         val rowCount = cursor.count
 
+        // 모든 이미지뷰를 기본 상태로 초기화
+        val imageViews = listOf(
+            imageBook1, imageBook2, imageBook3, imageBook4,
+            imageBook5, imageBook6, imageBook7, imageBook8, imageBook9
+        )
+
+        imageViews.forEach { imageView ->
+            imageView.setImageResource(R.drawable.baseline_book_24) // 기본 책 이미지
+            imageView.alpha = 0.3f // 투명도 낮추기
+            imageView.setOnClickListener(null) // 클릭 이벤트 초기화
+        }
+
         for (i in 1..rowCount.coerceAtMost(9)) {
             if (cursor.moveToPosition(i - 1)) { // i는 1부터 시작하므로 1을 뺌
                 val imageUri = cursor.getString(cursor.getColumnIndexOrThrow("image_url"))
                     ?.takeIf { it != "null" } ?: ""
+                val bookTitle = cursor.getString(cursor.getColumnIndexOrThrow("title"))
 
-                val imageView = when (i) {
-                    1 -> imageBook1
-                    2 -> imageBook2
-                    3 -> imageBook3
-                    4 -> imageBook4
-                    5 -> imageBook5
-                    6 -> imageBook6
-                    7 -> imageBook7
-                    8 -> imageBook8
-                    9 -> imageBook9
-                    else -> null
+                val imageView = imageViews[i - 1]
+
+                imageView.alpha = 1.0f // 투명도 복원
+                if (imageUri.isNotBlank()) {
+                    try {
+                        val uri = Uri.parse(imageUri)
+                        imageView.setImageURI(uri)
+                        Log.d("DEBUG", "<성공> $i 번째 이미지 로드 성공")
+                    } catch (e: Exception) {
+                        Log.e("DEBUG", "*** $i 번째 이미지 로드 실패: 예외 발생")
+                        imageView.setImageResource(R.drawable.baseline_book_24) // 기본 이미지 설정
+                    }
+                } else {
+                    imageView.setImageResource(R.drawable.baseline_book_24) // 기본 이미지 설정
                 }
 
-                imageView?.let { iv ->
-                    if (imageUri.isNotBlank()) {
-                        try {
-                            val uri = Uri.parse(imageUri)
-                            iv.setImageURI(uri)
-                            Log.d("DEBUG", "<성공> $i 번째 이미지 로드 성공")
-                        } catch (e: Exception) {
-                            Log.e("DEBUG", "*** $i 번째 이미지 로드 실패: 예외 발생")
-                            iv.setImageResource(R.drawable.baseline_book_24) // 기본 이미지 설정
-                        }
-                    } else {
-                        iv.setImageResource(R.drawable.baseline_book_24) // 기본 이미지 설정
-                    }
+                // 클릭 이벤트 추가
+                imageView.setOnClickListener {
+                    val intent = Intent(this, BookInfo::class.java)
+                    intent.putExtra("intent_title", bookTitle)
+                    startActivity(intent)
                 }
             }
         }
